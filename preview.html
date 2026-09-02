@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Mooo ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#080308;
+    color:#fff;
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#080308;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:1s;
+}
+
+.loader-heart{
+    font-size:65px;
+    animation:heartbeat 1.2s infinite;
+}
+
+#loader p{
+    margin-top:20px;
+    letter-spacing:4px;
+    font-size:12px;
+    opacity:.7;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,50,120,.12),transparent 30%),
+        radial-gradient(circle at 80% 80%,rgba(150,30,100,.10),transparent 30%);
+    pointer-events:none;
+    z-index:-2;
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    opacity:.035;
+    pointer-events:none;
+    z-index:1000;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music-btn{
+    position:fixed;
+    right:20px;
+    top:20px;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(20,5,15,.7);
+    color:white;
+    cursor:pointer;
+    z-index:2000;
+    backdrop-filter:blur(10px);
+    font-size:20px;
+    transition:.3s;
+}
+
+.music-btn:hover{
+    transform:scale(1.1);
+    background:#9b174c;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    padding:30px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.small-title{
+    font-size:12px;
+    letter-spacing:7px;
+    text-transform:uppercase;
+    color:#e9a8bd;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(55px,10vw,120px);
+    line-height:.85;
+    font-weight:600;
+}
+
+.hero h1 span{
+    color:#ff6f9f;
+    font-style:italic;
+}
+
+.hero-sub{
+    margin-top:35px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    color:#ddd;
+    line-height:1.5;
+}
+
+.scroll{
+    position:absolute;
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:11px;
+    letter-spacing:4px;
+    opacity:.5;
+}
+
+.scroll::after{
+    content:"";
+    display:block;
+    width:1px;
+    height:55px;
+    background:white;
+    opacity:.5;
+    margin:12px auto 0;
+}
+
+/* =========================
+   HEARTS
+========================= */
+
+.heart{
+    position:fixed;
+    bottom:-50px;
+    color:#ff4f8b;
+    pointer-events:none;
+    z-index:10;
+    animation:floatHeart linear forwards;
+    opacity:.7;
+}
+
+@keyframes floatHeart{
+    0%{
+        transform:translateY(0) scale(.7) rotate(0);
+        opacity:0;
+    }
+    10%{opacity:.7;}
+    100%{
+        transform:translateY(-110vh) scale(1.4) rotate(25deg);
+        opacity:0;
+    }
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.25);}
+}
+
+/* =========================
+   CHAPTER
+========================= */
+
+.chapter{
+    min-height:100vh;
+    padding:120px 8%;
+    display:flex;
+    align-items:center;
+    position:relative;
+}
+
+.chapter:nth-child(even){
+    background:rgba(255,255,255,.015);
+}
+
+.chapter-inner{
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+}
+
+.chapter-number{
+    color:#d45a82;
+    font-size:12px;
+    letter-spacing:5px;
+    margin-bottom:15px;
+}
+
+.chapter h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(45px,7vw,85px);
+    line-height:1;
+    margin-bottom:30px;
+    font-weight:600;
+}
+
+.chapter h2 span{
+    color:#ff6b99;
+}
+
+.story{
+    max-width:760px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;
+    line-height:1.8;
+    color:#ddd;
+}
+
+.story strong{
+    color:#fff;
+}
+
+.story .highlight{
+    display:block;
+    font-size:30px;
+    color:#ff80a8;
+    margin:25px 0;
+    line-height:1.4;
+}
+
+.emoji{
+    font-family:sans-serif;
+}
+
+/* =========================
+   IMAGE CARD
+========================= */
+
+.memory-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    margin-top:50px;
+}
+
+.memory-card{
+    height:420px;
+    border-radius:25px;
+    overflow:hidden;
+    position:relative;
+    background:
+        linear-gradient(135deg,#2c0d1c,#12040b);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.memory-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:1s;
+}
+
+.memory-card:hover img{
+    transform:scale(1.05);
+}
+
+.memory-placeholder{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    color:#a87b8c;
+}
+
+.memory-placeholder span{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.memory-placeholder small{
+    letter-spacing:2px;
+}
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote{
+    margin:55px 0;
+    padding:35px;
+    border-left:2px solid #ff558b;
+    background:rgba(255,255,255,.025);
+}
+
+.quote p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:32px;
+    font-style:italic;
+    line-height:1.4;
+}
+
+.quote small{
+    display:block;
+    margin-top:15px;
+    opacity:.5;
+}
+
+/* =========================
+   DATE
+========================= */
+
+.date{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 25px;
+    border:1px solid rgba(255,100,150,.4);
+    border-radius:50px;
+    color:#ff7da3;
+    letter-spacing:5px;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+    margin-top:70px;
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:linear-gradient(#ff528b,transparent);
+}
+
+.timeline-item{
+    padding-left:70px;
+    margin-bottom:50px;
+    position:relative;
+}
+
+.timeline-item::before{
+    content:"❤️";
+    position:absolute;
+    left:7px;
+    top:0;
+    font-size:20px;
+}
+
+.timeline-item h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.timeline-item p{
+    color:#aaa;
+    line-height:1.7;
+}
+
+/* =========================
+   FINAL LETTER
+========================= */
+
+.final-letter{
+    max-width:800px;
+    margin:auto;
+    text-align:left;
+}
+
+.final-letter p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:23px;
+    line-height:1.9;
+    color:#ddd;
+    margin-bottom:22px;
+}
+
+.final-letter .big{
+    font-size:36px;
+    color:#ff739d;
+    line-height:1.4;
+    margin:40px 0;
+}
+
+.signature{
+    margin-top:60px;
+    text-align:right;
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+    color:#ff7da3;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px;
+    position:relative;
+}
+
+.final h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(50px,9vw,110px);
+    line-height:.95;
+}
+
+.final h2 span{
+    color:#ff6798;
+    font-style:italic;
+}
+
+.final p{
+    margin-top:35px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+    color:#ccc;
+}
+
+.final .rose{
+    margin-top:45px;
+    font-size:60px;
+    animation:heartbeat 1.4s infinite;
+}
+
+/* =========================
+   REVEAL ANIMATION
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    .chapter{
+        padding:90px 25px;
+    }
+
+    .hero{
+        padding:25px;
+    }
+
+    .hero-sub{
+        font-size:20px;
+    }
+
+    .chapter h2{
+        font-size:52px;
+    }
+
+    .story{
+        font-size:20px;
+    }
+
+    .story .highlight{
+        font-size:27px;
+    }
+
+    .memory-grid{
+        grid-template-columns:1fr;
+    }
+
+    .memory-card{
+        height:350px;
+    }
+
+    .quote p{
+        font-size:26px;
+    }
+
+    .final-letter p{
+        font-size:21px;
+    }
+
+    .final-letter .big{
+        font-size:30px;
+    }
+
+    .music-btn{
+        right:15px;
+        top:15px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="noise"></div>
+
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-heart">❤️</div>
+    <p>A LITTLE STORY ABOUT US...</p>
+</div>
+
+<!-- MUSIC -->
+<button class="music-btn" id="musicBtn">♫</button>
+
+<!-- Replace this with your own music file -->
+<audio id="music" loop>
+    <source src="Kadhaippoma(KoshalWorld.Com).mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content reveal">
+
+        <div class="small-title">
+            A Story Written By Fate
+        </div>
+
+        <h1>
+            Happy Birthday,<br>
+            <span>Yen chellam</span> 🌹
+        </h1>
+
+        <p class="hero-sub">
+            Oru naal… nee en story-la vandha.<br>
+            Ippo… nee dhaan en story. ❤️
+        </p>
+
+    </div>
+
+    <div class="scroll">
+        SCROLL TO BEGIN
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTER 01
+========================= -->
+
+<section class="chapter">
+
+<div class="chapter-inner reveal">
+
+<div class="chapter-number">CHAPTER 01</div>
+
+<h2>
+    Our Story<br>
+    <span>Begins ❤️</span>
+</h2>
+
+<div class="story">
+
+<p>
+First-la unna daily sight adichittu iruppen. 😂
+</p>
+
+<p>
+Appo nee ennoda friend-oda roommate-nu enakku theriyum…
+aana unakku enna theriyuma,
+naan unna ippadi oru naal en life-la
+ivlo important person-aa aagum-nu
+appo nenachadhe illa.
+</p>
+
+<p>
+Oru naal unexpected-aa
+<strong>Archana enakkaga Salem Bus Stand-la wait pannittu irundha.</strong>
+</p>
+
+<p>
+Adhuve oru unexpected moment.
+</p>
+
+<p>
+Aana adhula innum oru coincidence irundhuchu…
+</p>
+
+<span class="highlight">
+Neeyum anga wait pannittu irundha. ❤️
+</span>
+
+<p>
+Appram same bus-la namma rendu perum vandhom.
+</p>
+
+<p>
+Nee poi seat-la ukkandha…
+Naan konjam pinnadi irundhu unna paathuttu irundhen. 😂
+</p>
+
+<p>
+Nee un friends-kitta thirumbi thirumbi pesittu irundha.
+Naan mattum anga ukkandhu unna pathi
+konjam konjam-aa details collect panna aarambichitten. 😅❤️
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTER 02
+========================= -->
+
+<section class="chapter">
+
+<div class="chapter-inner reveal">
+
+<div class="chapter-number">CHAPTER 02</div>
+
+<h2>
+    Find Your<br>
+    <span>Insta 📱</span>
+</h2>
+
+<div class="story">
+
+<span class="highlight">
+“I’m gonna find her Insta.” 😂
+</span>
+
+<p>
+Un Instagram account-a kandupidichen.
+</p>
+
+<p>
+Follow kuduthen…
+</p>
+
+<p>
+<strong>Nee accept pannita. ❤️</strong>
+</p>
+
+<p>
+Adhu chinna vishayam maari therinjirukkalam…
+Aana enakku adhu appo romba periya matter. 😂
+</p>
+
+<p>
+Appram daily un Insta stories paaka aarambichen.
+Like pannitu…
+sila stories-ku screenshot kooda eduthu vechuppaen. 😂❤️
+</p>
+
+<p>
+Konjam konjam-aa…
+<strong>unkitta message panna aarambichen.</strong>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTER 03
+========================= -->
+
+<section class="chapter">
+
+<div class="chapter-inner reveal">
+
+<div class="chapter-number">CHAPTER 03</div>
+
+<h2>
+    Engineering<br>
+    <span>Graphics 📐❤️</span>
+</h2>
+
+<div class="story">
+
+<p>
+Oru naal nee en kitta help ketta…
+</p>
+
+<span class="highlight">
+“Engineering Graphics diagrams pottu thariya?”
+</span>
+
+<p>
+Naan yosikkave illa…
+<strong>“Okay.”</strong> nu sollitten. 😂
+</p>
+
+<p>
+Nee images-a Instagram-la dhaan share pannina.
+Aana enakku un number venum. 😅
+</p>
+
+<p>
+So naan…
+</p>
+
+<div class="quote">
+
+<p>
+“Un number sollu…
+naan WhatsApp-la message panren.
+Diagram share pannidu.”
+</p>
+
+</div>
+
+<p>
+Neevum number share panna…
+Appram WhatsApp-la namma pesina
+first proper connection start aachu. ❤️
+</p>
+
+<p>
+Diagrams pottu mudichitten.
+</p>
+
+<p>
+Aana adha un kitta direct-aa vandhu kudukka
+enakku bayama irundhuchu. 😂
+</p>
+
+<p>
+So naan en room-mate paiyan kitta kuduthu…
+</p>
+
+<span class="highlight">
+“Idha Kaviya-kitta kuduthuru.” 😂❤️
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTER 04
+========================= -->
+
+<section class="chapter">
+
+<div class="chapter-inner reveal">
+
+<div class="chapter-number">CHAPTER 04</div>
+
+<h2>
+    9:00 PM<br>
+    <span>🌙</span>
+</h2>
+
+<div class="story">
+
+<p>
+Second year-la…
+oru naal night around <strong>9 PM.</strong>
+</p>
+
+<p>
+Sudden-aa Instagram-la unakku message panna.
+</p>
+
+<div class="quote">
+
+<p>
+“Unakku Kaviya-nu yaarachum therinjavanga irukaangala?”
+</p>
+
+<small>— Andha oru random message ❤️</small>
+
+</div>
+
+<p>
+Adhukkapparam…
+<strong>sudden-aa call panna aarambichom.</strong>
+</p>
+
+<p>
+Andha call…
+just oru normal call illa.
+</p>
+
+<span class="highlight">
+Adhu dhaan namma rendu peroda real story start aana moment. ❤️
+</span>
+
+<p>
+Oru casual message-aa start aana vishayam…
+oru Instagram follow-aa start aana connection…
+Engineering Graphics diagrams-la continue aana conversation…
+WhatsApp-la grow aana friendship…
+</p>
+
+<p>
+Andha <strong>9 PM call-la…</strong>
+namma story oru pudhu chapter-ku pochu. 🌹
+</p>
+
+<div class="date">
+    07 • 07 • 2025
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTER 05
+========================= -->
+
+<section class="chapter">
+
+<div class="chapter-inner reveal">
+
+<div class="chapter-number">CHAPTER 05</div>
+
+<h2>
+    Our First<br>
+    <span>Meet 📸❤️</span>
+</h2>
+
+<div class="story">
+
+<p>
+Oru naal college holidays announce pannanga.
+</p>
+
+<p>
+Namma rendu perum somewhere pogalaam-nu plan pannom.
+</p>
+
+<p>
+Naan lake-la wait pannittu irundhen.
+</p>
+
+<p>
+Konjam nerathula nee hostel-la irundhu vandha…
+</p>
+
+<span class="highlight">
+Naan unna paatha moment…
+enna solla nu theriyala. ❤️
+</span>
+
+<p>
+Appram namma rendu perum bus yerinom.
+</p>
+
+<p>
+Nee oru separate seat-la…
+Naan oru separate seat-la…
+</p>
+
+<p>
+Aana en mind-la vera oru plan odittu irundhuchu. 😂
+</p>
+
+<div class="quote">
+
+<p>
+“Salem reach aagumbodhu
+namma rendu perum oru selfie edukkanum.”
+</p>
+
+</div>
+
+<p>
+Bus Salem reach aachu.
+</p>
+
+<p>
+Nee bus-la irundhu eranga pora…
+Naanum eranga ready.
+</p>
+
+<p>
+Appo sudden-aa nee en kitta…
+</p>
+
+<span class="highlight">
+“Namma photo eduthuppom.” ❤️
+</span>
+
+<p>
+Andha one sentence ketta udane…
+enakku literally butterflies. 🦋❤️
+</p>
+
+<p>
+Naan nenachittu irundha vishayatha…
+nee dhaan first-aa ketta.
+</p>
+
+<span class="highlight">
+Namma First Meet.<br>
+Namma First Selfie.<br>
+Namma Story-la Oru Unforgettable Memory. ❤️
+</span>
+
+</div>
+
+<div class="memory-grid">
+
+    <div class="memory-card">
+
+        <img src="photos/first-meet.jpg" alt="Our First Selfie">
+
+    </div>
+
+    <div class="memory-card">
+
+        <img src="photos/lake.jpg" alt="That Day">
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTER 06
+========================= -->
+
+<section class="chapter">
+
+<div class="chapter-inner reveal">
+
+<div class="chapter-number">CHAPTER 06</div>
+
+<h2>
+    Nee Enakkaga<br>
+    <span>Aludha ❤️</span>
+</h2>
+
+<div class="story">
+
+<p>
+Oru point-la…
+<strong>nee en kitta un love-a sollita.</strong>
+</p>
+
+<p>
+Aana naan appo <strong>“Vena…”</strong> nu sollitten.
+</p>
+
+<p>
+Adhukku reason nee illa…
+enakku konjam bayam.
+</p>
+
+<p>
+En career-a nenachen.
+</p>
+
+<p>
+“Idhu correct-aa?
+Namma rendu peroda future epdi irukkum?”
+nu romba yosichen.
+</p>
+
+<p>
+Aana…
+nee enakkaga aludha appo…
+enakku ullukulla edho oru feeling vandhuduchu.
+</p>
+
+<span class="highlight">
+“Ivla naan yen miss pannanum?” ❤️
+</span>
+
+<p>
+Andha moment-la dhaan…
+<strong>nee en life-la irundhu poidave koodadhu</strong>
+nu realize panninen.
+</p>
+
+<div class="quote">
+
+<p>
+“Naan unnai just like pannala…
+unna lose panna bayapadura alavukku
+love pannirukken.” ❤️
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTER 07
+========================= -->
+
+<section class="chapter">
+
+<div class="chapter-inner reveal">
+
+<div class="chapter-number">CHAPTER 07</div>
+
+<h2>
+    Our Movie<br>
+    <span>Date 🎬❤️</span>
+</h2>
+
+<div class="story">
+
+<p>
+Oru naal sudden-aa namma dating ponom.
+</p>
+
+<p>
+Proper-aa plan pannave illa…
+<strong>movie pogalaam-nu sudden-aa decide pannom.</strong>
+</p>
+
+<p>
+Appo namma <em>Thalaivan Thalaivii</em>
+movie paaka ponom.
+</p>
+
+<p>
+Movie paathuttu irundha nerathula…
+naan movie-a mattum paakala.
+</p>
+
+<span class="highlight">
+Namma rendu peraiyum imagine panna aarambichitten.
+</span>
+
+<p>
+“Life-la enna problem vandhaalum…
+oruthara oruthar vittu kudukka koodadhu.”
+</p>
+
+<p>
+“Enna misunderstanding vandhaalum…
+namale pesi mudichikkanum.”
+</p>
+
+<p>
+Appo nee sudden-aa…
+<strong>en shoulder mela saanjita.</strong>
+</p>
+
+<p>
+Andha moment-la…
+enakku unna kiss panna thonuchu. ❤️
+</p>
+
+<p>
+Aana…
+<strong>ennala mudiyala. 😂</strong>
+</p>
+
+<p>
+Semma control pannitten.
+</p>
+
+<span class="highlight">
+Movie vida…
+namma moments dhaan enakku memorable. ❤️
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTER 08
+========================= -->
+
+<section class="chapter">
+
+<div class="chapter-inner reveal">
+
+<div class="chapter-number">CHAPTER 08</div>
+
+<h2>
+    One Seat,<br>
+    <span>Two Hearts 🚌❤️</span>
+</h2>
+
+<div class="story">
+
+<p>
+Oru naal night-la bus-la namma rendu perum travel pannom.
+</p>
+
+<p>
+Indha time…
+<strong>separate seats illa.</strong>
+</p>
+
+<span class="highlight">
+Namma rendu perum ore seat-la ukkandhu travel pannom.
+</span>
+
+<p>
+Andha night…
+naan unna pakkathula irundhu feel pannina moment…
+enakku oru different feeling.
+</p>
+
+<div class="quote">
+
+<p>
+“I really love this girl.”
+</p>
+
+</div>
+
+<p>
+Romba periya event edhuvum nadakala.
+</p>
+
+<p>
+No big plan.
+No special place.
+</p>
+
+<span class="highlight">
+Just…<br>
+Night bus.<br>
+One seat.<br>
+You beside me. ❤️
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTER 09
+========================= -->
+
+<section class="chapter">
+
+<div class="chapter-inner reveal">
+
+<div class="chapter-number">CHAPTER 09</div>
+
+<h2>
+    Nee Ennai<br>
+    <span>Choose Pannina ❤️</span>
+</h2>
+
+<div class="story">
+
+<p>
+Mooo…
+</p>
+
+<p>
+Unna naan romba hurt pannirukken…
+sila neram therinjum,
+sila neram theriyamalum.
+</p>
+
+<p>
+Adhuku naan excuse solla maaten.
+</p>
+
+<span class="highlight">
+Ivlo hurt panniyum,
+nee ennai choose panna. ❤️
+</span>
+
+<p>
+Enna vittu pola.
+En kooda irundha.
+En mela irundha love-ah vittukodukkala.
+</p>
+
+<p>
+Adhu enakku romba periya vishayam, Mooo.
+</p>
+
+<p>
+Nee perfect illa.
+Naanum perfect illa.
+</p>
+
+<p>
+Aana namma rendu perum perfect-aa irukkanum nu
+naan kekkala.
+</p>
+
+<span class="highlight">
+Namma rendu perum oruthara oruthar vittu pogama irukkanum.
+</span>
+
+<p>
+Problems vandha pesi solve pannikanum.
+<br>
+Hurt aana heal pannikanum.
+<br>
+Happy moments vandha serndhu enjoy pannikanum.
+</p>
+
+<span class="highlight">
+Because… enakku nee romba romba pudikkum, Mooo. ❤️
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTER 10
+========================= -->
+
+<section class="chapter">
+
+<div class="chapter-inner reveal">
+
+<div class="chapter-number">CHAPTER 10</div>
+
+<h2>
+    Kadhipoma<br>
+    <span>Long Ride 🛵🎶</span>
+</h2>
+
+<div class="story">
+
+<p>
+Mooo-ku <strong>“Kadhipoma”</strong> song romba pudikkum.
+</p>
+
+<p>
+Enakku oru aasai irukku…
+</p>
+
+<span class="highlight">
+Oru naal unna oru long ride-ku
+kooptu poga vendum. 🛵❤️
+</span>
+
+<p>
+Namma rendu perum mattum…
+No rush.
+No tension.
+Just us.
+</p>
+
+<p>
+Andha song-la varra maari,
+namma own little moment-ah recreate pannanum
+nu romba aasai.
+</p>
+
+<div class="quote">
+
+<p>
+“Idha naan romba naala imagine pannitu irundhen…
+Ippo en pakkathula Mooo irukka.”
+</p>
+
+</div>
+
+<p>
+Maybe andha ride-ku periya destination
+kooda thevai illa.
+</p>
+
+<span class="highlight">
+Nee pakkathula irundha podhum. ❤️
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTER 11
+========================= -->
+
+<section class="chapter">
+
+<div class="chapter-inner reveal">
+
+<div class="chapter-number">CHAPTER 11</div>
+
+<h2>
+    For My<br>
+    <span>Mooo ❤️</span>
+</h2>
+
+<div class="final-letter">
+
+<p>
+Love you, Mooo. ❤️
+</p>
+
+<p>
+Oru vishayam mattum eppovume nyabagam vechuko…
+</p>
+
+<p>
+<strong>Enna nambikkaiyaa iru.</strong>
+</p>
+
+<p>
+Namma rendu perum nenichadhu kandippa nadakkum.
+Konjam late aagalam…
+sila problems varalam…
+sila days namakku romba difficult-aa irukkalam…
+</p>
+
+<p>
+Aana naan oru vishayam mattum vidamaaten —
+</p>
+
+<p class="big">
+Namma. ❤️
+</p>
+
+<p>
+Enakku nee.
+<br>
+Unakku naan.
+<br>
+<strong>Avlothaan.</strong> ❤️
+</p>
+
+<p>
+Indha jenmathula enakku vera enna venum
+nu enakku theriyala…
+</p>
+
+<p>
+Nee sirichaa naan happy.
+Nee sad-aa irundhaa enakku kastam.
+Nee kovama irundhaa unna samaadhanapaduthanum nu thonum.
+</p>
+
+<p>
+Nee en pakkathula irundhaa…
+<strong>enakku vera edhuvum perusa theriyadhu.</strong>
+</p>
+
+<p>
+Naan unna hurt pannirundhaalum,
+oru naal kooda unna lose panna naan virumbala.
+</p>
+
+<p>
+Because…
+</p>
+
+<p class="big">
+Nee en life-la vandha oru person mattum illa.<br>
+Nee en life-oda oru part aayita. ❤️
+</p>
+
+<p>
+Mooo, future eppadi irukkum nu namakku theriyadhu.
+</p>
+
+<p>
+Aana future epdi irundhaalum…
+</p>
+
+<p class="big">
+Adhula naanum neeyum serndhu irukkanum.
+</p>
+
+<p>
+Namma first selfie-la irundhu,
+andha bus journey varaikum,
+namma movie date-la irundhu,
+andha night bus-la same seat-la travel pannadhu varaikum…
+</p>
+
+<p>
+Every little memory is special to me.
+</p>
+
+<p>
+And I want more.
+</p>
+
+<p>
+More rides.<br>
+More photos.<br>
+More random calls.<br>
+More fights and more silly apologies.<br>
+More dates.<br>
+More memories.<br>
+More birthdays.
+</p>
+
+<p class="big">
+More “Namma”. ❤️
+</p>
+
+<p>
+So Mooo…
+</p>
+
+<p>
+<strong>Nambikkaiyaa iru.</strong><br>
+<strong>Enna vittutu pogadha.</strong><br>
+<strong>Naanum unna vittutu pogamaaten.</strong>
+</p>
+
+<p>
+Namma nenichadhu nadakkum.
+</p>
+
+<div class="signature">
+— Un Rahu ❤️
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FINAL ENDING
+========================= -->
+
+<section class="final">
+
+<div class="reveal">
+
+<div class="small-title">
+    OUR STORY CONTINUES...
+</div>
+
+<h2>
+    Enakku <span>Nee.</span><br>
+    Unakku <span>Naan.</span>
+</h2>
+
+<p>
+Indha Jenmam…<br>
+<strong>Avlothaan. ❤️</strong>
+</p>
+
+<div class="rose">
+    🌹
+</div>
+
+<p>
+Happy Birthday, Yen Thangoo.
+</p>
+
+<p>
+<strong>Love you forever, Mooo. ❤️</strong>
+</p>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   LOADER
+========================= */
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        document.getElementById("loader").style.opacity="0";
+
+        setTimeout(()=>{
+            document.getElementById("loader").style.display="none";
+        },1000);
+
+    },1200);
+
+});
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const reveals=document.querySelectorAll(".reveal");
+
+const observer=new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("active");
+
+        }
+
+    });
+
+},{
+    threshold:.15
+});
+
+reveals.forEach(el=>observer.observe(el));
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    const hearts=["❤️","💕","💗","💖","💓","🌹"];
+
+    heart.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.fontSize=(12+Math.random()*18)+"px";
+
+    heart.style.animationDuration=(6+Math.random()*7)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },14000);
+}
+
+setInterval(createHeart,900);
+
+
+/* =========================
+   MUSIC
+========================= */
+
+const music=document.getElementById("music");
+const musicBtn=document.getElementById("musicBtn");
+
+let playing=false;
+
+musicBtn.addEventListener("click",()=>{
+
+    if(!playing){
+
+        music.play().then(()=>{
+
+            playing=true;
+            musicBtn.innerHTML="⏸";
+
+        }).catch(()=>{
+
+            alert("Add your music.mp3 file in the same folder as index.html ❤️");
+
+        });
+
+    }else{
+
+        music.pause();
+        playing=false;
+        musicBtn.innerHTML="♫";
+
+    }
+
+});
+
+
+/* =========================
+   CLICK HEART
+========================= */
+
+document.addEventListener("click",(e)=>{
+
+    if(e.target.closest(".music-btn")) return;
+
+    const heart=document.createElement("div");
+
+    heart.innerHTML="❤️";
+
+    heart.style.position="fixed";
+    heart.style.left=e.clientX+"px";
+    heart.style.top=e.clientY+"px";
+    heart.style.pointerEvents="none";
+    heart.style.zIndex="3000";
+    heart.style.fontSize="20px";
+
+    document.body.appendChild(heart);
+
+    heart.animate([
+
+        {
+            transform:"translate(-50%,-50%) scale(.5)",
+            opacity:1
+        },
+
+        {
+            transform:"translate(-50%,-150px) scale(1.5)",
+            opacity:0
+        }
+
+    ],{
+
+        duration:1000,
+        easing:"ease-out"
+
+    }).onfinish=()=>heart.remove();
+
+});
+
+</script>
+
+</body>
+</html>
