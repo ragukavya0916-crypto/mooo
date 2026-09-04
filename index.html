@@ -13,10 +13,6 @@
 
 <style>
 
-/* =====================================================
-   RESET
-===================================================== */
-
 *{
     margin:0;
     padding:0;
@@ -34,86 +30,19 @@ body{
     overflow-x:hidden;
 }
 
-/* =====================================================
-   BACKGROUND
-===================================================== */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-
-    background:
-    radial-gradient(
-        circle at 20% 20%,
-        rgba(255,50,120,.13),
-        transparent 30%
-    ),
-    radial-gradient(
-        circle at 80% 80%,
-        rgba(150,30,100,.12),
-        transparent 30%
-    );
-
-    pointer-events:none;
-    z-index:-2;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    inset:-20%;
-    background:
-        radial-gradient(circle,rgba(255,80,140,.04) 0%,transparent 60%);
-    animation:backgroundPulse 8s ease-in-out infinite;
-    pointer-events:none;
-    z-index:-3;
-}
-
-@keyframes backgroundPulse{
-    0%,100%{
-        transform:scale(1);
-        opacity:.6;
-    }
-
-    50%{
-        transform:scale(1.15);
-        opacity:1;
-    }
-}
-
-/* =====================================================
-   NOISE
-===================================================== */
-
-.noise{
-    position:fixed;
-    inset:0;
-    opacity:.035;
-    pointer-events:none;
-    z-index:1000;
-
-    background-image:url(
-        "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E"
-    );
-}
-
-/* =====================================================
-   LOADER
-===================================================== */
+/* =========================
+   LOADING
+========================= */
 
 #loader{
     position:fixed;
     inset:0;
     background:#080308;
-
     z-index:9999;
-
     display:flex;
     align-items:center;
     justify-content:center;
     flex-direction:column;
-
     transition:1s;
 }
 
@@ -127,42 +56,51 @@ body::after{
     letter-spacing:4px;
     font-size:12px;
     opacity:.7;
-    text-align:center;
 }
 
-/* =====================================================
-   MUSIC BUTTON
-===================================================== */
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,50,120,.12),transparent 30%),
+        radial-gradient(circle at 80% 80%,rgba(150,30,100,.10),transparent 30%);
+    pointer-events:none;
+    z-index:-2;
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    opacity:.035;
+    pointer-events:none;
+    z-index:1000;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* =========================
+   MUSIC
+========================= */
 
 .music-btn{
     position:fixed;
-
     right:20px;
     top:20px;
-
-    width:50px;
-    height:50px;
-
+    width:48px;
+    height:48px;
     border-radius:50%;
-
     border:1px solid rgba(255,255,255,.25);
-
-    background:rgba(20,5,15,.72);
-
+    background:rgba(20,5,15,.7);
     color:white;
-
     cursor:pointer;
-
     z-index:2000;
-
-    backdrop-filter:blur(12px);
-
+    backdrop-filter:blur(10px);
     font-size:20px;
-
     transition:.3s;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.4);
 }
 
 .music-btn:hover{
@@ -170,57 +108,37 @@ body::after{
     background:#9b174c;
 }
 
-.music-btn.playing{
-    background:#9b174c;
-    box-shadow:
-        0 0 25px rgba(255,70,130,.45);
-}
-
-/* =====================================================
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero{
     min-height:100vh;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     text-align:center;
-
     position:relative;
-
     padding:30px;
 }
 
 .hero-content{
-    max-width:950px;
+    max-width:900px;
 }
 
 .small-title{
     font-size:12px;
-
     letter-spacing:7px;
-
     text-transform:uppercase;
-
     color:#e9a8bd;
-
     margin-bottom:25px;
 }
 
 .hero h1{
     font-family:'Cormorant Garamond',serif;
-
     font-size:clamp(55px,10vw,120px);
-
     line-height:.85;
-
     font-weight:600;
-
-    text-shadow:
-        0 0 35px rgba(255,80,140,.15);
 }
 
 .hero h1 span{
@@ -230,149 +148,97 @@ body::after{
 
 .hero-sub{
     margin-top:35px;
-
     font-family:'Cormorant Garamond',serif;
-
     font-size:25px;
-
     color:#ddd;
-
     line-height:1.5;
 }
 
 .scroll{
     position:absolute;
-
     bottom:35px;
     left:50%;
-
     transform:translateX(-50%);
-
     font-size:11px;
-
     letter-spacing:4px;
-
     opacity:.5;
 }
 
 .scroll::after{
     content:"";
-
     display:block;
-
     width:1px;
-
     height:55px;
-
     background:white;
-
     opacity:.5;
-
     margin:12px auto 0;
 }
 
-/* =====================================================
-   FLOATING HEARTS
-===================================================== */
+/* =========================
+   HEARTS
+========================= */
 
 .heart{
     position:fixed;
-
     bottom:-50px;
-
     color:#ff4f8b;
-
     pointer-events:none;
-
     z-index:10;
-
     animation:floatHeart linear forwards;
-
     opacity:.7;
 }
 
 @keyframes floatHeart{
-
     0%{
-        transform:
-            translateY(0)
-            scale(.7)
-            rotate(0);
-
+        transform:translateY(0) scale(.7) rotate(0);
         opacity:0;
     }
-
-    10%{
-        opacity:.7;
-    }
-
+    10%{opacity:.7;}
     100%{
-        transform:
-            translateY(-110vh)
-            scale(1.4)
-            rotate(25deg);
-
+        transform:translateY(-110vh) scale(1.4) rotate(25deg);
         opacity:0;
     }
 }
 
 @keyframes heartbeat{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.25);
-    }
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.25);}
 }
 
-/* =====================================================
+/* =========================
    CHAPTER
-===================================================== */
+========================= */
 
 .chapter{
     min-height:100vh;
-
     padding:120px 8%;
-
     display:flex;
     align-items:center;
-
     position:relative;
 }
 
-.chapter:nth-of-type(even){
+.chapter:nth-child(even){
     background:rgba(255,255,255,.015);
 }
 
 .chapter-inner{
     width:100%;
-
     max-width:1100px;
-
     margin:auto;
 }
 
 .chapter-number{
     color:#d45a82;
-
     font-size:12px;
-
     letter-spacing:5px;
-
     margin-bottom:15px;
 }
 
 .chapter h2{
     font-family:'Cormorant Garamond',serif;
-
     font-size:clamp(45px,7vw,85px);
-
     line-height:1;
-
     margin-bottom:30px;
-
     font-weight:600;
 }
 
@@ -381,38 +247,22 @@ body::after{
 }
 
 .story{
-    max-width:800px;
-
+    max-width:760px;
     font-family:'Cormorant Garamond',serif;
-
     font-size:22px;
-
     line-height:1.8;
-
     color:#ddd;
-}
-
-.story p{
-    margin-bottom:20px;
 }
 
 .story strong{
     color:#fff;
 }
 
-.story em{
-    color:#ff9ab8;
-}
-
 .story .highlight{
     display:block;
-
     font-size:30px;
-
     color:#ff80a8;
-
-    margin:28px 0;
-
+    margin:25px 0;
     line-height:1.4;
 }
 
@@ -420,108 +270,31 @@ body::after{
     font-family:sans-serif;
 }
 
-/* =====================================================
-   QUOTE
-===================================================== */
-
-.quote{
-    margin:55px 0;
-
-    padding:35px;
-
-    border-left:2px solid #ff558b;
-
-    background:rgba(255,255,255,.025);
-
-    border-radius:0 18px 18px 0;
-
-    box-shadow:
-        inset 0 0 30px rgba(255,50,100,.025);
-}
-
-.quote p{
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:32px;
-
-    font-style:italic;
-
-    line-height:1.4;
-}
-
-.quote small{
-    display:block;
-
-    margin-top:15px;
-
-    opacity:.5;
-}
-
-/* =====================================================
-   DATE
-===================================================== */
-
-.date{
-    display:inline-block;
-
-    margin:15px 0 30px;
-
-    padding:12px 25px;
-
-    border:1px solid rgba(255,100,150,.4);
-
-    border-radius:50px;
-
-    color:#ff7da3;
-
-    letter-spacing:5px;
-
-    box-shadow:
-        0 0 25px rgba(255,60,120,.08);
-}
-
-/* =====================================================
-   IMAGE CARDS
-===================================================== */
+/* =========================
+   IMAGE CARD
+========================= */
 
 .memory-grid{
     display:grid;
-
     grid-template-columns:repeat(2,1fr);
-
     gap:20px;
-
-    margin-top:55px;
+    margin-top:50px;
 }
 
 .memory-card{
     height:420px;
-
     border-radius:25px;
-
     overflow:hidden;
-
     position:relative;
-
     background:
-        linear-gradient(
-            135deg,
-            #2c0d1c,
-            #12040b
-        );
-
+        linear-gradient(135deg,#2c0d1c,#12040b);
     border:1px solid rgba(255,255,255,.1);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.4);
 }
 
 .memory-card img{
     width:100%;
     height:100%;
-
     object-fit:cover;
-
     transition:1s;
 }
 
@@ -529,260 +302,196 @@ body::after{
     transform:scale(1.05);
 }
 
-/* =====================================================
-   PROPOSAL MOMENT
-===================================================== */
-
-.proposal-moment{
-    margin-top:65px;
-
-    padding:45px 35px;
-
-    border-radius:25px;
-
-    border:1px solid rgba(255,100,150,.18);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,60,120,.08),
-            rgba(255,255,255,.015)
-        );
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.35);
-
-    text-align:center;
+.memory-placeholder{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    color:#a87b8c;
 }
 
-.proposal-time{
-    font-size:13px;
-
-    letter-spacing:6px;
-
-    color:#e58ca8;
-
-    margin-bottom:25px;
-}
-
-.proposal-text{
-    font-family:'Cormorant Garamond',serif;
-
+.memory-placeholder span{
     font-size:50px;
-
-    font-style:italic;
-
-    color:#ff719c;
-
-    margin:35px 0;
-
-    text-shadow:
-        0 0 25px rgba(255,70,130,.2);
+    margin-bottom:15px;
 }
 
-.proposal-ending{
-    margin-top:35px;
+.memory-placeholder small{
+    letter-spacing:2px;
+}
 
+/* =========================
+   QUOTE
+========================= */
+
+.quote{
+    margin:55px 0;
+    padding:35px;
+    border-left:2px solid #ff558b;
+    background:rgba(255,255,255,.025);
+}
+
+.quote p{
     font-family:'Cormorant Garamond',serif;
-
-    font-size:28px;
-
-    color:#ff8aad;
-}
-
-/* =====================================================
-   LONG RIDE
-===================================================== */
-
-.ride-card{
-    margin-top:50px;
-
-    padding:40px 30px;
-
-    border-radius:25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,70,130,.07),
-            rgba(255,255,255,.015)
-        );
-
-    border:1px solid rgba(255,255,255,.08);
-
-    text-align:center;
-}
-
-.ride-song{
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:42px;
-
-    color:#ff719c;
-
+    font-size:32px;
     font-style:italic;
-
-    margin-bottom:20px;
+    line-height:1.4;
 }
 
-.ride-road{
-    font-size:45px;
-
-    margin:25px 0;
-
-    animation:rideFloat 2s ease-in-out infinite;
+.quote small{
+    display:block;
+    margin-top:15px;
+    opacity:.5;
 }
 
-@keyframes rideFloat{
+/* =========================
+   DATE
+========================= */
 
-    0%,100%{
-        transform:translateX(-5px);
-    }
-
-    50%{
-        transform:translateX(5px);
-    }
+.date{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 25px;
+    border:1px solid rgba(255,100,150,.4);
+    border-radius:50px;
+    color:#ff7da3;
+    letter-spacing:5px;
 }
 
-/* =====================================================
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+    margin-top:70px;
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:linear-gradient(#ff528b,transparent);
+}
+
+.timeline-item{
+    padding-left:70px;
+    margin-bottom:50px;
+    position:relative;
+}
+
+.timeline-item::before{
+    content:"❤️";
+    position:absolute;
+    left:7px;
+    top:0;
+    font-size:20px;
+}
+
+.timeline-item h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.timeline-item p{
+    color:#aaa;
+    line-height:1.7;
+}
+
+/* =========================
    FINAL LETTER
-===================================================== */
+========================= */
 
 .final-letter{
     max-width:800px;
-
     margin:auto;
-
     text-align:left;
 }
 
 .final-letter p{
     font-family:'Cormorant Garamond',serif;
-
     font-size:23px;
-
     line-height:1.9;
-
     color:#ddd;
-
     margin-bottom:22px;
 }
 
 .final-letter .big{
-    font-size:38px;
-
+    font-size:36px;
     color:#ff739d;
-
     line-height:1.4;
-
-    margin:45px 0;
-
-    text-align:center;
+    margin:40px 0;
 }
 
 .signature{
     margin-top:60px;
-
     text-align:right;
-
     font-family:'Cormorant Garamond',serif;
-
-    font-size:30px;
-
+    font-size:28px;
     color:#ff7da3;
 }
 
-/* =====================================================
-   FINAL PROPOSAL
-===================================================== */
+/* =========================
+   FINAL
+========================= */
 
 .final{
     min-height:100vh;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     text-align:center;
-
     padding:40px;
-
     position:relative;
-}
-
-.final-content{
-    max-width:900px;
 }
 
 .final h2{
     font-family:'Cormorant Garamond',serif;
-
     font-size:clamp(50px,9vw,110px);
-
     line-height:.95;
 }
 
 .final h2 span{
     color:#ff6798;
-
     font-style:italic;
 }
 
 .final p{
     margin-top:35px;
-
     font-family:'Cormorant Garamond',serif;
-
     font-size:28px;
-
     color:#ccc;
-
-    line-height:1.5;
 }
 
 .final .rose{
     margin-top:45px;
-
     font-size:60px;
-
     animation:heartbeat 1.4s infinite;
 }
 
-.final-question{
-    margin-top:40px;
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:38px;
-
-    color:#ff82aa;
-}
-
-/* =====================================================
-   REVEAL
-===================================================== */
+/* =========================
+   REVEAL ANIMATION
+========================= */
 
 .reveal{
     opacity:0;
-
     transform:translateY(60px);
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
+    transition:1s ease;
 }
 
 .reveal.active{
     opacity:1;
-
     transform:translateY(0);
 }
 
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
 @media(max-width:700px){
 
@@ -794,19 +503,8 @@ body::after{
         padding:25px;
     }
 
-    .small-title{
-        letter-spacing:4px;
-        font-size:10px;
-    }
-
-    .hero h1{
-        font-size:clamp(55px,17vw,85px);
-        line-height:.9;
-    }
-
     .hero-sub{
         font-size:20px;
-        margin-top:30px;
     }
 
     .chapter h2{
@@ -815,7 +513,6 @@ body::after{
 
     .story{
         font-size:20px;
-        line-height:1.75;
     }
 
     .story .highlight{
@@ -830,29 +527,8 @@ body::after{
         height:350px;
     }
 
-    .quote{
-        margin:40px 0;
-        padding:25px;
-    }
-
     .quote p{
         font-size:26px;
-    }
-
-    .proposal-moment{
-        padding:35px 20px;
-    }
-
-    .proposal-text{
-        font-size:40px;
-    }
-
-    .proposal-ending{
-        font-size:23px;
-    }
-
-    .ride-song{
-        font-size:34px;
     }
 
     .final-letter p{
@@ -860,10 +536,6 @@ body::after{
     }
 
     .final-letter .big{
-        font-size:30px;
-    }
-
-    .final-question{
         font-size:30px;
     }
 
@@ -880,35 +552,24 @@ body::after{
 
 <div class="noise"></div>
 
-<!-- =====================================================
-     LOADER
-===================================================== -->
-
+<!-- LOADER -->
 <div id="loader">
-
     <div class="loader-heart">❤️</div>
-
-    <p>
-        A LITTLE STORY ABOUT US...
-    </p>
-
+    <p>A LITTLE STORY ABOUT US...</p>
 </div>
 
-<!-- =====================================================
-     MUSIC
-===================================================== -->
+<!-- MUSIC -->
+<button class="music-btn" id="musicBtn">♫</button>
 
-<button class="music-btn" id="musicBtn">
-    ♫
-</button>
-
+<!-- Replace this with your own music file -->
 <audio id="music" loop>
     <source src="Kadhaippoma(KoshalWorld.Com).mp3" type="audio/mpeg">
 </audio>
 
-<!-- =====================================================
+
+<!-- =========================
      HERO
-===================================================== -->
+========================= -->
 
 <section class="hero">
 
@@ -937,17 +598,15 @@ body::after{
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CHAPTER 01
-===================================================== -->
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    CHAPTER 01
-</div>
+<div class="chapter-number">CHAPTER 01</div>
 
 <h2>
     Our Story<br>
@@ -1007,17 +666,15 @@ konjam konjam-aa details collect panna aarambichitten. 😅❤️
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CHAPTER 02
-===================================================== -->
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    CHAPTER 02
-</div>
+<div class="chapter-number">CHAPTER 02</div>
 
 <h2>
     Find Your<br>
@@ -1065,17 +722,15 @@ Konjam konjam-aa…
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CHAPTER 03
-===================================================== -->
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    CHAPTER 03
-</div>
+<div class="chapter-number">CHAPTER 03</div>
 
 <h2>
     Engineering<br>
@@ -1100,6 +755,10 @@ Naan yosikkave illa…
 <p>
 Nee images-a Instagram-la dhaan share pannina.
 Aana enakku un number venum. 😅
+</p>
+
+<p>
+So naan…
 </p>
 
 <div class="quote">
@@ -1142,17 +801,15 @@ So naan en room-mate paiyan kitta kuduthu…
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CHAPTER 04
-===================================================== -->
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    CHAPTER 04
-</div>
+<div class="chapter-number">CHAPTER 04</div>
 
 <h2>
     9:00 PM<br>
@@ -1176,9 +833,7 @@ Sudden-aa Instagram-la enakku message panna.
 “Unakku Kaviya-nu yaarachum therinjavanga irukaangala?”
 </p>
 
-<small>
-— Andha oru random message ❤️
-</small>
+<small>— Andha oru random message ❤️</small>
 
 </div>
 
@@ -1215,17 +870,15 @@ namma story oru pudhu chapter-ku pochu. 🌹
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CHAPTER 05
-===================================================== -->
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    CHAPTER 05
-</div>
+<div class="chapter-number">CHAPTER 05</div>
 
 <h2>
     Our First<br>
@@ -1324,22 +977,18 @@ Namma Story-la Oru Unforgettable Memory. ❤️
 
 </div>
 
-</div>
-
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CHAPTER 06
-===================================================== -->
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    CHAPTER 06
-</div>
+<div class="chapter-number">CHAPTER 06</div>
 
 <h2>
     Nee Enakkaga<br>
@@ -1402,6 +1051,8 @@ love pannirukken.” ❤️
 
 </div>
 
+<!-- HER PROPOSAL MOMENT -->
+
 <div class="proposal-moment">
 
 <div class="proposal-time">
@@ -1439,6 +1090,11 @@ clear aayiduchu.
 <strong>Unna lose panna koodadhu.</strong> ❤️
 </p>
 
+<p>
+Andha 11:38 PM…
+<strong>nee enna choose pannina moment.</strong>
+</p>
+
 <div class="proposal-ending">
     11:38 PM — The moment “Namma” began. ❤️
 </div>
@@ -1447,22 +1103,17 @@ clear aayiduchu.
 
 </div>
 
-</div>
-
 </section>
-
-
-<!-- =====================================================
+    
+<!-- =========================
      CHAPTER 07
-===================================================== -->
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    CHAPTER 07
-</div>
+<div class="chapter-number">CHAPTER 07</div>
 
 <h2>
     Our Movie<br>
@@ -1520,26 +1171,8 @@ Aana…
 </p>
 
 <p>
-Control pannama irundhirundha…
-that day namma first kiss aana day-ah irundhirukkum. 🥺❤️
-</p>
+Control pannama irundhirundha… that day namma first kiss aana day-ah irundhirukkum. 🥺❤️ Ippo yosikkumbodhu, andha beautiful moment-ah miss pannitomnu konjam feel aagudhu… 🥹 But one thing is sure — andha moment varaikkum, un kooda irukkura ovvoru moment-um enakku romba romba special. ❤️‍🩹 Andha first kiss moment eppo vandhaalum, adhu un kooda irukkanum-nu dhaan aasai. ❤️
 
-<p>
-Ippo yosikkumbodhu,
-andha beautiful moment-ah miss pannitomnu
-konjam feel aagudhu… 🥹
-</p>
-
-<p>
-But one thing is sure —
-andha moment varaikkum,
-un kooda irukkura ovvoru moment-um
-enakku romba romba special. ❤️‍🩹
-</p>
-
-<p>
-Andha first kiss moment eppo vandhaalum,
-<strong>adhu un kooda irukkanum-nu dhaan aasai.</strong> ❤️
 </p>
 
 <span class="highlight">
@@ -1554,17 +1187,15 @@ namma moments dhaan enakku memorable. ❤️
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CHAPTER 08
-===================================================== -->
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    CHAPTER 08
-</div>
+<div class="chapter-number">CHAPTER 08</div>
 
 <h2>
     One Seat,<br>
@@ -1622,18 +1253,15 @@ You beside me. ❤️
 
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      CHAPTER 09
-===================================================== -->
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    CHAPTER 09
-</div>
+<div class="chapter-number">CHAPTER 09</div>
 
 <h2>
     Un Birthday…<br>
@@ -1643,21 +1271,16 @@ You beside me. ❤️
 <div class="story">
 
 <p>
-Last year un birthday-ku
-unna outside-ku kooptu pona. 🎂❤️
+Last year un birthday-ku unna outside-ku kooptu pona. 🎂❤️
 </p>
 
 <p>
-En friends-um kooda vandhanga.
+En friends-um kooda vandhanga.<br>
+First cake cut pannom… celebrate pannom…
 </p>
 
 <p>
-First cake cut pannom…
-celebrate pannom…
-</p>
-
-<p>
-Aana konjam nerathukku apram,
+Aana konjam nerathukku apram,<br>
 naan-um neeyum mattum konjam time spend pannom.
 </p>
 
@@ -1666,69 +1289,58 @@ Andha time enakku romba special. ❤️
 </span>
 
 <p>
-Aana enna aachu nu theriyala…
+Aana enna aachu nu theriyala…<br>
 sudden-aa nee kovama aayita. 🥺
 </p>
 
 <p>
-Naanum proper-aa pesa mudiyama,
+Naanum proper-aa pesa mudiyama,<br>
 enna sollanum nu theriyama irundhen.
 </p>
 
 <p>
-Aana unna appadi kovama vittutu
-poga manasu varala.
+Aana unna appadi kovama vittutu poga manasu varala.
 </p>
 
 <p>
-Bike-la thirumbi varumbodhu,
+Bike-la thirumbi varumbodhu,<br>
 unna samadhanapadutha try pannitu vandhen…
 </p>
 
+<p>
+Andha journey-la oru small moment—
+</p>
+
 <span class="highlight">
-Andha journey-la oru small moment… ❤️
+un kaiya pidichu,<br>
+un hand-la oru kiss panninen. ❤️
 </span>
 
 <p>
-Un kaiya pidichu,
-un hand-la oru kiss panninen. ❤️
-</p>
-
-<p>
-Adhukku apram dhaan konjam konjam-aa
-nee calm aana…
+Adhukku apram dhaan<br>
+konjam konjam-aa nee calm aana…
 </p>
 
 <p>
 Finally everything became okay. 🥹❤️
 </p>
 
-<div class="quote">
-
-<p>
-“Love-na happy moments mattum illa…”
-</p>
-
-</div>
-
 <p>
 Maybe idhu paakka romba simple-aa irukkalam…
 </p>
 
-<p>
-Aana enakku?
-<strong>Andha whole moment unforgettable.</strong>
-</p>
+<span class="highlight">
+Aana enakku?<br>
+Andha whole moment unforgettable.
+</span>
 
 <p>
 Because love-na happy moments mattum illa…
 </p>
 
 <p>
-Sometimes kovam varum.
-<br>
-Sometimes misunderstanding varum.
-<br>
+Sometimes kovam varum.<br>
+Sometimes misunderstanding varum.<br>
 Sometimes pesa mudiyama pogum.
 </p>
 
@@ -1736,20 +1348,22 @@ Sometimes pesa mudiyama pogum.
 Aana at the end…
 </p>
 
-<span class="highlight">
-“Namma rendu perum okay aaganum”
-nu rendu perukkum irukkura feeling dhaan love. ❤️
-</span>
+<div class="quote">
 
 <p>
-Andha birthday-la cake cut pannadhu mattum
-enakku memory illa…
+“Namma rendu perum okay aaganum”
+nu rendu perukkum irukkura feeling dhaan love. ❤️
+</p>
+
+</div>
+
+<p>
+Andha birthday-la cake cut pannadhu mattum enakku memory illa…
 </p>
 
 <p>
-Un kovatha samadhanapaduthina
-andha bike ride,
-un hand-la kudutha andha small kiss,
+Un kovatha samadhanapaduthina andha bike ride,<br>
+un hand-la kudutha andha small kiss,<br>
 adhukku apram nee okay aanadhu…
 </p>
 
@@ -1772,17 +1386,15 @@ Namma story. ❤️
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CHAPTER 10
-===================================================== -->
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    CHAPTER 10
-</div>
+<div class="chapter-number">CHAPTER 10</div>
 
 <h2>
     Nee Ennai<br>
@@ -1826,24 +1438,19 @@ Naanum perfect illa.
 </p>
 
 <p>
-Aana namma rendu perum perfect-aa irukkanum
-nu naan kekkala.
+Aana namma rendu perum perfect-aa irukkanum nu
+naan kekkala.
 </p>
 
 <span class="highlight">
-Namma rendu perum oruthara oruthar
-vittu pogama irukkanum.
+Namma rendu perum oruthara oruthar vittu pogama irukkanum.
 </span>
 
 <p>
 Problems vandha pesi solve pannikanum.
-</p>
-
-<p>
+<br>
 Hurt aana heal pannikanum.
-</p>
-
-<p>
+<br>
 Happy moments vandha serndhu enjoy pannikanum.
 </p>
 
@@ -1858,17 +1465,15 @@ Because… enakku nee romba romba pudikkum, Mooo. ❤️
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CHAPTER 11
-===================================================== -->
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    CHAPTER 11
-</div>
+<div class="chapter-number">CHAPTER 11</div>
 
 <h2>
     Kadhipoma<br>
@@ -1878,102 +1483,47 @@ Because… enakku nee romba romba pudikkum, Mooo. ❤️
 <div class="story">
 
 <p>
-Mooo-ku <strong>“Kadhipoma”</strong>
-song romba pudikkum.
+Mooo-ku <strong>“Kadhipoma”</strong> song romba pudikkum.
 </p>
 
 <p>
-Enakku oru thought vandhuduchu…
+Enakku oru aasai irukku…
 </p>
 
 <span class="highlight">
-“Indha song ketkittu…
-Mooo kooda oru long ride poganum.” ❤️
+Oru naal unna oru long ride-ku
+kooptu poga vendum. 🛵❤️
 </span>
 
 <p>
-Destination mukkiyam illa.
+Namma rendu perum mattum…
+No rush.
+No tension.
+Just us.
 </p>
 
 <p>
-Evlo kilometres pogrom-nu mukkiyam illa.
+Andha song-la varra maari,
+namma own little moment-ah recreate pannanum
+nu romba aasai.
 </p>
 
-<p>
-Road enga pogudhu-nu kooda mukkiyam illa.
-</p>
-
-<div class="ride-card">
-
-<div class="ride-song">
-    Kadhipoma 🎶
-</div>
-
-<div class="ride-road">
-    🛵 ❤️ 🌙
-</div>
+<div class="quote">
 
 <p>
-You + Me + Long Ride + Our Song
+“Idha naan romba naala imagine pannitu irundhen…
+Ippo en pakkathula Mooo irukka.”
 </p>
 
 </div>
 
 <p>
-Night time…
-road-la lights…
-earphones-la namma favourite song…
-</p>
-
-<p>
-Nee en pinnadi ukkandhu,
-naan bike drive pannittu…
+Maybe andha ride-ku periya destination
+kooda thevai illa.
 </p>
 
 <span class="highlight">
-No rush.<br>
-No destination.<br>
-Just you and me. ❤️
-</span>
-
-<p>
-Sila memories plan panna mudiyadhu.
-</p>
-
-<p>
-Sila moments create panna mudiyadhu.
-</p>
-
-<p>
-Aana…
-<strong>namma rendu perum serndhu create panna
-pora memories</strong>
-dhaan enakku romba special.
-</p>
-
-<p>
-One day…
-indha long ride kandippa poganum.
-</p>
-
-<span class="highlight">
-Kadhipoma…<br>
-Oru long ride…<br>
-Namma rendu perum mattum. ❤️
-</span>
-
-<p>
-Andha ride-la song mudinjidalam…
-road mudinjidalam…
-night mudinjidalam…
-</p>
-
-<p>
-Aana naan virumburadhu onnu dhaan —
-</p>
-
-<span class="highlight">
-Namma story mattum mudiyakoodadhu. ❤️
+Nee pakkathula irundha podhum. ❤️
 </span>
 
 </div>
@@ -1983,174 +1533,145 @@ Namma story mattum mudiyakoodadhu. ❤️
 </section>
 
 
-<!-- =====================================================
-     FINAL LETTER
-===================================================== -->
+<!-- =========================
+     CHAPTER 12
+========================= -->
 
 <section class="chapter">
 
 <div class="chapter-inner reveal">
 
-<div class="chapter-number">
-    FINAL LETTER
-</div>
+<div class="chapter-number">CHAPTER 12</div>
 
 <h2>
-    To My<br>
+    For My<br>
     <span>Mooo ❤️</span>
 </h2>
 
 <div class="final-letter">
 
 <p>
-Mooo…
+Love you, Mooo. ❤️
 </p>
 
 <p>
-Indha website-la namma story-oda
-small small moments dhaan ezhudhiyirukken.
+Oru vishayam mattum eppovume nyabagam vechuko…
 </p>
 
 <p>
-Aana unakku theriyuma?
+<strong>Enna nambikkaiyaa iru.</strong>
 </p>
 
 <p>
-Namma story-la naan ezhudha mudiyadha
-innum neraya moments irukku.
+Namma rendu perum nenichadhu kandippa nadakkum.
+Konjam late aagalam…
+sila problems varalam…
+sila days namakku romba difficult-aa irukkalam…
 </p>
 
 <p>
-Un smile…
-</p>
-
-<p>
-Un kovam…
-</p>
-
-<p>
-Un childish moments…
-</p>
-
-<p>
-Unakku theriyama naan unna paakra moments…
-</p>
-
-<p>
-Namma random conversations…
-</p>
-
-<p>
-Namma silly fights…
-</p>
-
-<p>
-Namma silent moments…
-</p>
-
-<p>
-Idhellame enakku memories.
+Aana naan oru vishayam mattum vidamaaten —
 </p>
 
 <p class="big">
-    Nee vandhadhukku apram<br>
-    en life konjam konjam-aa maariduchu. ❤️
+Namma. ❤️
 </p>
 
 <p>
-Maybe naan perfect boyfriend illa.
+Enakku nee.
+<br>
+Unakku naan.
+<br>
+<strong>Avlothaan.</strong> ❤️
 </p>
 
 <p>
-Sometimes naan unna hurt panniruppen.
-Sometimes unna purinjikka miss panniruppen.
+Indha jenmathula enakku vera enna venum
+nu enakku theriyala…
 </p>
 
 <p>
-Aana oru vishayam mattum true…
+Nee sirichaa naan happy.
+Nee sad-aa irundhaa enakku kastam.
+Nee kovama irundhaa unna samaadhanapaduthanum nu thonum.
+</p>
+
+<p>
+Nee en pakkathula irundhaa…
+<strong>enakku vera edhuvum perusa theriyadhu.</strong>
+</p>
+
+<p>
+Naan unna hurt pannirundhaalum,
+oru naal kooda unna lose panna naan virumbala.
+</p>
+
+<p>
+Because…
 </p>
 
 <p class="big">
-    I never want to lose you. ❤️
+Nee en life-la vandha oru person mattum illa.<br>
+Nee en life-oda oru part aayita. ❤️
 </p>
 
 <p>
-Un kooda future epdi irukkum-nu
-enakku exact-aa theriyadhu.
+Mooo, future eppadi irukkum nu namakku theriyadhu.
 </p>
 
 <p>
-Aana future vandha every chapter-layum
-nee irukkanum-nu dhaan aasai.
-</p>
-
-<p>
-Innum neraya fights varalam.
-</p>
-
-<p>
-Innum neraya misunderstandings varalam.
-</p>
-
-<p>
-Innum neraya happy moments-um varalam.
-</p>
-
-<p>
-Aana enakku oru promise…
+Aana future epdi irundhaalum…
 </p>
 
 <p class="big">
-    Problems vandhaalum…<br>
-    Namma vittu pogakoodadhu. ❤️
+Adhula naanum neeyum serndhu irukkanum.
 </p>
 
 <p>
-Namma rendu perum pesi solve pannuvom.
+Namma first selfie-la irundhu,
+andha bus journey varaikum,
+namma movie date-la irundhu,
+andha night bus-la same seat-la travel pannadhu varaikum…
 </p>
 
 <p>
-Hurt aana heal pannuvom.
+Every little memory is special to me.
 </p>
 
 <p>
-Happy aana serndhu celebrate pannuvom.
+And I want more.
 </p>
 
 <p>
-And most importantly…
+More rides.<br>
+More photos.<br>
+More random calls.<br>
+More fights and more silly apologies.<br>
+More dates.<br>
+More memories.<br>
+More birthdays.
 </p>
 
 <p class="big">
-    Namma story-ah continue pannuvom. ❤️
+More “Namma”. ❤️
 </p>
 
 <p>
-Happy Birthday, Mooo. 🎂🌹
+So Mooo…
 </p>
 
 <p>
-Unakku oru birthday wish mattum illa…
+<strong>Nambikkaiyaa iru.</strong><br>
+<strong>Enna vittutu pogadha.</strong><br>
+<strong>Naanum unna vittutu pogamaaten.</strong>
 </p>
 
 <p>
-<strong>
-En life-la innum neraya birthdays,
-neraya memories,
-neraya chapters,
-neraya years…
-</strong>
-</p>
-
-<p>
-Un kooda celebrate pannanum.
+Namma nenichadhu nadakkum.
 </p>
 
 <div class="signature">
-
-Forever yours,<br>
-<strong>Ragu ❤️</strong>
-
+— Un Rahu ❤️
 </div>
 
 </div>
@@ -2160,44 +1681,38 @@ Forever yours,<br>
 </section>
 
 
-<!-- =====================================================
-     FINAL PROPOSAL
-===================================================== -->
+<!-- =========================
+     FINAL ENDING
+========================= -->
 
 <section class="final">
 
-<div class="final-content reveal">
+<div class="reveal">
 
 <div class="small-title">
-    THE NEXT CHAPTER
+    OUR STORY CONTINUES...
 </div>
 
 <h2>
-    Our Story<br>
-    <span>Isn't Over ❤️</span>
+    Enakku <span>Nee.</span><br>
+    Unakku <span>Naan.</span>
 </h2>
 
 <p>
-11 chapters mudinjiduchu…
+Indha Jenmam…<br>
+<strong>Avlothaan. ❤️</strong>
 </p>
-
-<p>
-Aana namma story-ku<br>
-<strong>“The End”</strong> illa.
-</p>
-
-<div class="final-question">
-    Will you stay for all the chapters<br>
-    that are yet to come? ❤️
-</div>
 
 <div class="rose">
     🌹
 </div>
 
 <p>
-Happy Birthday,<br>
-<strong>Yen Chellam. ❤️</strong>
+Happy Birthday, Yen Thangoo.
+</p>
+
+<p>
+<strong>Love you forever, Mooo. ❤️</strong>
 </p>
 
 </div>
@@ -2207,201 +1722,156 @@ Happy Birthday,<br>
 
 <script>
 
-/* =====================================================
+/* =========================
    LOADER
-===================================================== */
+========================= */
 
-window.addEventListener("load", function(){
+window.addEventListener("load",()=>{
 
-    setTimeout(function(){
+    setTimeout(()=>{
 
-        const loader = document.getElementById("loader");
+        document.getElementById("loader").style.opacity="0";
 
-        loader.style.opacity = "0";
-        loader.style.pointerEvents = "none";
-
-        setTimeout(function(){
-            loader.style.display = "none";
+        setTimeout(()=>{
+            document.getElementById("loader").style.display="none";
         },1000);
 
-    },1500);
+    },1200);
 
 });
 
 
-/* =====================================================
-   REVEAL ON SCROLL
-===================================================== */
+/* =========================
+   SCROLL REVEAL
+========================= */
 
-const reveals = document.querySelectorAll(".reveal");
+const reveals=document.querySelectorAll(".reveal");
 
-const revealObserver = new IntersectionObserver(
+const observer=new IntersectionObserver((entries)=>{
 
-    function(entries){
+    entries.forEach(entry=>{
 
-        entries.forEach(function(entry){
+        if(entry.isIntersecting){
 
-            if(entry.isIntersecting){
+            entry.target.classList.add("active");
 
-                entry.target.classList.add("active");
+        }
 
-            }
+    });
 
-        });
-
-    },
-
-    {
-        threshold:0.12
-    }
-
-);
-
-reveals.forEach(function(element){
-
-    revealObserver.observe(element);
-
+},{
+    threshold:.15
 });
 
+reveals.forEach(el=>observer.observe(el));
 
-/* =====================================================
+
+/* =========================
    FLOATING HEARTS
-===================================================== */
+========================= */
 
 function createHeart(){
 
-    const heart = document.createElement("div");
+    const heart=document.createElement("div");
 
-    heart.classList.add("heart");
+    heart.className="heart";
 
-    heart.innerHTML = Math.random() > .5 ? "❤️" : "♡";
+    const hearts=["❤️","💕","💗","💖","💓","🌹"];
 
-    heart.style.left =
-        Math.random() * 100 + "vw";
+    heart.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
 
-    heart.style.fontSize =
-        (12 + Math.random() * 18) + "px";
+    heart.style.left=Math.random()*100+"vw";
 
-    heart.style.animationDuration =
-        (7 + Math.random() * 7) + "s";
+    heart.style.fontSize=(12+Math.random()*18)+"px";
+
+    heart.style.animationDuration=(6+Math.random()*7)+"s";
 
     document.body.appendChild(heart);
 
-    setTimeout(function(){
-
+    setTimeout(()=>{
         heart.remove();
-
-    },15000);
-
+    },14000);
 }
 
-setInterval(createHeart,1200);
+setInterval(createHeart,900);
 
 
-/* =====================================================
+/* =========================
    MUSIC
-===================================================== */
+========================= */
 
-const music =
-    document.getElementById("music");
+const music=document.getElementById("music");
+const musicBtn=document.getElementById("musicBtn");
 
-const musicBtn =
-    document.getElementById("musicBtn");
+let playing=false;
 
-let isPlaying = false;
+musicBtn.addEventListener("click",()=>{
 
-musicBtn.addEventListener("click", function(){
+    if(!playing){
 
-    if(!isPlaying){
+        music.play().then(()=>{
 
-        music.play()
-        .then(function(){
+            playing=true;
+            musicBtn.innerHTML="⏸";
 
-            isPlaying = true;
+        }).catch(()=>{
 
-            musicBtn.classList.add("playing");
-
-            musicBtn.innerHTML = "♫";
-
-        })
-        .catch(function(){
-
-            alert(
-                "Music play aagala. MP3 file same folder-la irukka check pannunga ❤️"
-            );
+            alert("Add your music.mp3 file in the same folder as index.html ❤️");
 
         });
 
     }else{
 
         music.pause();
-
-        isPlaying = false;
-
-        musicBtn.classList.remove("playing");
-
-        musicBtn.innerHTML = "♫";
+        playing=false;
+        musicBtn.innerHTML="♫";
 
     }
 
 });
 
 
-/* =====================================================
-   START MUSIC AFTER FIRST USER INTERACTION
-===================================================== */
+/* =========================
+   CLICK HEART
+========================= */
 
-document.addEventListener(
-    "click",
-    function(){
+document.addEventListener("click",(e)=>{
 
-        if(
-            !isPlaying &&
-            music.paused
-        ){
+    if(e.target.closest(".music-btn")) return;
 
-            /* Browser autoplay restrictions
-               prevent automatic music.
-               User can press music button. */
+    const heart=document.createElement("div");
 
+    heart.innerHTML="❤️";
+
+    heart.style.position="fixed";
+    heart.style.left=e.clientX+"px";
+    heart.style.top=e.clientY+"px";
+    heart.style.pointerEvents="none";
+    heart.style.zIndex="3000";
+    heart.style.fontSize="20px";
+
+    document.body.appendChild(heart);
+
+    heart.animate([
+
+        {
+            transform:"translate(-50%,-50%) scale(.5)",
+            opacity:1
+        },
+
+        {
+            transform:"translate(-50%,-150px) scale(1.5)",
+            opacity:0
         }
 
-    },
-    {once:true}
-);
+    ],{
 
+        duration:1000,
+        easing:"ease-out"
 
-/* =====================================================
-   PARALLAX HERO
-===================================================== */
+    }).onfinish=()=>heart.remove();
 
-window.addEventListener(
-    "scroll",
-    function(){
-
-        const hero =
-            document.querySelector(".hero-content");
-
-        if(!hero) return;
-
-        const scroll =
-            window.scrollY;
-
-        if(scroll < window.innerHeight){
-
-            hero.style.transform =
-                "translateY(" +
-                scroll * .18 +
-                "px)";
-
-            hero.style.opacity =
-                1 - scroll /
-                (window.innerHeight * .8);
-
-        }
-
-    }
-);
+});
 
 </script>
 
