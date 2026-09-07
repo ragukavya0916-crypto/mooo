@@ -206,6 +206,63 @@ body::before{
 }
 
 /* =========================
+   BUTTERFLIES
+========================= */
+
+.butterfly{
+    position:fixed;
+    bottom:-40px;
+    pointer-events:none;
+    z-index:12;
+    font-size:22px;
+    opacity:0;
+    animation-name:flutterUp;
+    animation-timing-function:ease-in-out;
+    animation-fill-mode:forwards;
+    filter:drop-shadow(0 0 6px rgba(255,110,160,.35));
+}
+
+.butterfly-wing{
+    display:inline-block;
+    animation:wingFlap .28s ease-in-out infinite alternate;
+    transform-origin:center;
+}
+
+@keyframes wingFlap{
+    from{ transform:scaleX(1) rotate(0deg); }
+    to{ transform:scaleX(.55) rotate(4deg); }
+}
+
+@keyframes flutterUp{
+    0%{
+        transform:translate(0,0) rotate(-6deg);
+        opacity:0;
+    }
+    8%{
+        opacity:.9;
+    }
+    20%{
+        transform:translate(60px,-22vh) rotate(8deg);
+    }
+    38%{
+        transform:translate(-50px,-42vh) rotate(-10deg);
+    }
+    56%{
+        transform:translate(55px,-62vh) rotate(9deg);
+    }
+    74%{
+        transform:translate(-40px,-82vh) rotate(-7deg);
+    }
+    92%{
+        opacity:.85;
+    }
+    100%{
+        transform:translate(30px,-108vh) rotate(4deg);
+        opacity:0;
+    }
+}
+
+/* =========================
    CHAPTER
 ========================= */
 
@@ -2078,6 +2135,53 @@ function createHeart(){
 }
 
 setInterval(createHeart,900);
+
+
+/* =========================
+   FLUTTERING BUTTERFLIES
+========================= */
+
+function createButterfly(){
+
+    const butterfly=document.createElement("div");
+
+    butterfly.className="butterfly";
+
+    const wing=document.createElement("span");
+    wing.className="butterfly-wing";
+    wing.innerHTML="🦋";
+
+    butterfly.appendChild(wing);
+
+    butterfly.style.left=Math.random()*100+"vw";
+
+    const size=16+Math.random()*20;
+    butterfly.style.fontSize=size+"px";
+
+    const duration=8+Math.random()*6;
+    butterfly.style.animationDuration=duration+"s";
+
+    /* slight hue variation so they don't all look identical */
+    const hue=Math.random()*60-30;
+    butterfly.style.filter=`hue-rotate(${hue}deg) drop-shadow(0 0 6px rgba(255,110,160,.35))`;
+
+    /* wings flutter a touch faster/slower per butterfly */
+    wing.style.animationDuration=(0.22+Math.random()*0.16)+"s";
+
+    document.body.appendChild(butterfly);
+
+    setTimeout(()=>{
+        butterfly.remove();
+    },duration*1000+500);
+
+}
+
+setInterval(createButterfly,1600);
+
+/* a few right away so the effect is visible immediately */
+for(let i=0;i<3;i++){
+    setTimeout(createButterfly,i*400);
+}
 
 
 /* =========================
